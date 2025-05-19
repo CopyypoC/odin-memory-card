@@ -1,7 +1,7 @@
-export function fetchCards() {
-  const amount = 1;
+const AMOUNT = 2;
 
-  fetch(`https://nekos.best/api/v2/neko?amount=${amount}`)
+export function fetchCards() {
+  return fetch(`https://nekos.best/api/v2/neko?amount=${AMOUNT}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }

@@ -1,5 +1,7 @@
-import { useState } from "react";
 import "../styles/App.css";
+import "../styles/layout.css";
+import "../styles/theme.css";
+import { useState } from "react";
 import { GameHeader } from "./GameHeader.jsx";
 import { CardGrid } from "./CardGrid.jsx";
 

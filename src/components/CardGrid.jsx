@@ -5,13 +5,10 @@ export function CardGrid() {
   const [imgList, setImgsList] = useState([]);
   const cards = imgList.map((item) => {
     return (
-      <img
-        key={item.url}
-        src={item.url}
-        alt="Game card"
-        width="300"
-        height="300"
-      />
+      <div className="card-container" key={item.url}>
+        <img src={item.url} alt="Game card" width="300" height="300" />
+        <p className="artist-name">{"@" + item.artist}</p>
+      </div>
     );
   });
 
@@ -23,6 +20,7 @@ export function CardGrid() {
           return {
             id: item.id,
             url: item.url,
+            artist: item.artist_name,
           };
         });
 
@@ -35,5 +33,5 @@ export function CardGrid() {
       ignore = true;
     };
   }, []);
-  return <main>{cards}</main>;
+  return <main className="card-grid">{cards}</main>;
 }

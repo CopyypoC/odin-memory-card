@@ -1,0 +1,20 @@
+.game-header {
+  margin: 1rem 1rem 0;
+}
+
+.game-info h1 {
+  font-size: 2.3rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.game-info p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.score-container {
+  font-weight: 500;
+  font-size: 1.3rem;
+}

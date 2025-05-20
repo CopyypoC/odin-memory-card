@@ -6,3 +6,7 @@ body {
 .artist-name {
   color: var(--font-clr-dark-2);
 }
+
+* {
+  overflow-anchor: none;
+}

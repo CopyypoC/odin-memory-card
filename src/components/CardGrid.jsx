@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchCards } from "../api/fetchCards.js";
 import "../styles/CardGrid.css";
+
+const AMOUNT = 1;
 
 export function CardGrid() {
   const [imgList, setImgsList] = useState([]);
@@ -16,9 +17,13 @@ export function CardGrid() {
   });
 
   useEffect(() => {
-    let ignore = false;
-    fetchCards().then((json) => {
-      if (!ignore) {
+    const controller = new AbortController();
+
+    fetch(`https://nekos.best/api/v2/neko?amount=${AMOUNT}`, {
+      signal: controller.signal,
+    })
+      .then((res) => res.json())
+      .then((json) => {
         const imgList = json.results.map((item) => {
           return {
             id: item.id,
@@ -30,11 +35,11 @@ export function CardGrid() {
 
         console.log(json.results);
         setImgsList(imgList);
-      }
-    });
+      })
+      .catch((err) => console.log(err));
 
     return () => {
-      ignore = true;
+      controller.abort();
     };
   }, []);
   return <main className="card-grid">{cards}</main>;

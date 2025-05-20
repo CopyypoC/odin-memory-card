@@ -3,4 +3,9 @@
   --accent-clr: #ff9b45;
   --font-clr-dark-1: #521c0d;
   --font-clr-dark-2: #000000;
+  --link-clr: #011979;
+  --link-hover-clr: #601461;
+  --link-hover-bg-clr: #ffbe85;
+  --card-border: 2px solid #ff9b45;
+  --card-shadow: -3px 3px 10px 0px rgba(0, 0, 0, 0.25);
 }

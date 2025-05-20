@@ -6,10 +6,12 @@ import { GameHeader } from "./GameHeader.jsx";
 import { CardGrid } from "./CardGrid.jsx";
 
 function App() {
+  const [score, setScore] = useState(0);
+
   return (
     <>
-      <GameHeader />
-      <CardGrid />
+      <GameHeader score={score} />
+      <CardGrid score={score} setScore={setScore} />
     </>
   );
 }

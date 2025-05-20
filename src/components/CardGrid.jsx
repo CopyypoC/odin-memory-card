@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
 import "../styles/CardGrid.css";
 
-const AMOUNT = 1;
+const AMOUNT = 12;
 
 export function CardGrid({ score, setScore }) {
-  const [imgList, setImgsList] = useState([]);
+  const [imgList, setImgList] = useState([]);
 
   const resetImgList = () => {
     imgList.forEach((item) => (item.clicked = false));
+  };
+
+  const randomizeImgList = () => {
+    const randomizedList = [...imgList];
+
+    for (let i = randomizedList.length - 1; i > 0; i--) {
+      const swapIndex = Math.floor(Math.random() * i);
+      [randomizedList[i], randomizedList[swapIndex]] = [
+        randomizedList[swapIndex],
+        randomizedList[i],
+      ];
+    }
+
+    setImgList(randomizedList);
   };
 
   const handleScore = (e) => {
@@ -17,12 +31,14 @@ export function CardGrid({ score, setScore }) {
       if (item.url === url && item.clicked) {
         setScore(0);
         resetImgList();
+        randomizeImgList();
         return;
       }
 
       if (item.url === url && !item.clicked) {
         item.clicked = true;
         setScore(score + 1);
+        randomizeImgList();
       }
     });
   };
@@ -61,7 +77,7 @@ export function CardGrid({ score, setScore }) {
         });
 
         console.log(json.results);
-        setImgsList(imgList);
+        setImgList(imgList);
       })
       .catch((err) => console.log(err));
 
